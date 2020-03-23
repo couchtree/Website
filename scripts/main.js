@@ -10,6 +10,7 @@ var settings = {
 
 function main() {
     system = analyseSystem()
+    loadLanguage()
 }
 
 function loadTexts() {
@@ -43,6 +44,7 @@ function loadLanguage() {
 function setLanguage(language) {
     localStorage.setItem('lang', language)
     settings.language = language
+    loadTexts()
 }
 
 function analyseSystem() {
