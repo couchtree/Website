@@ -1,5 +1,7 @@
 window.addEventListener('load', () => {
-    main()
+    setTimeout(() => {
+        main()
+    }, 20)
 })
 
 var texts = {}
@@ -22,10 +24,11 @@ function loadTexts() {
 
 function updateTexts() {
     for(let obj in texts.texts) {
-        let element = document.getElementById(obj.id)
+        let object = texts.texts[obj]
+        let element = document.getElementById(object.id)
         let text = ''
-        for(let line in obj.lines) {
-            text += line + '\n\r'
+        for(let line in object.lines) {
+            text += object.lines[line] + '\n'
         }
         element.innerText = text
     }
