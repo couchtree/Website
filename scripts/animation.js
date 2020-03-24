@@ -10,7 +10,7 @@ class PicAnimation {
 
     load() {
         let http = new Http()
-        this.settings = JSON.parse(location.href.replace('index.html', '') + '/assets/pictures/' + this.animationname + '/' + this.animationname + '.json')
+        this.settings = JSON.parse(http.get(location.href.replace('index.html', '') + '/assets/pictures/' + this.animationname + '/' + this.animationname + '.json'))
     }
 
     play() {
