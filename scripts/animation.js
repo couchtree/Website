@@ -10,14 +10,7 @@ class PicAnimation {
 
     load() {
         let http = new Http()
-        //this.settings = http.get(location.href + '/assets/pictures/' + this.animationname)
-        this.settings = {
-            "fps": 30,
-            "filename": "baumanimation_000",
-            "type": "png",
-            "amountOfPictures": 69,
-            "repeat": true
-        }
+        this.settings = JSON.parse(http.get(location.href + '/assets/pictures/' + this.animationname))
     }
 
     play() {
