@@ -13,6 +13,10 @@ var settings = {
 function main() {
     system = analyseSystem()
     loadLanguage()
+    let animation = new PicAnimation('baumanimation')
+    animation.bind('test')
+    animation.load()
+    animation.play()
 }
 
 function loadTexts() {
