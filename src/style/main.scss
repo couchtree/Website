@@ -2,4 +2,15 @@
 $navbar-item-img-max-height: 10rem;
 $navbar-height: 5rem;
 
+#animated-tree {
+  width: 700px;
+  height: 700px;
+  background: url('../assets/images/tree_anim_sheet.jpg') left center;
+  animation: play 2.5s steps(69) forwards;
+}
+
+@keyframes play {
+  100% { background-position: -48300px; }
+}
+
 @import "~bulma/bulma"; // TODO: just use necessary bulma files
