@@ -1,3 +1,5 @@
+import Http from './http'
+
 window.addEventListener('load', () => {
     setTimeout(() => {
         main()
@@ -17,17 +19,17 @@ function main() {
 
 function loadTexts() {
     let filename = settings.language + '_index.json'
-    let path = location.href + 'assets/texts/' + filename 
+    let path = location.href + 'assets/texts/' + filename
     texts = JSON.parse(fetchText(path))
     updateTexts()
 }
 
 function updateTexts() {
-    for(let obj in texts.texts) {
+    for (let obj in texts.texts) {
         let object = texts.texts[obj]
         let element = document.getElementById(object.id)
         let text = ''
-        for(let line in object.lines) {
+        for (let line in object.lines) {
             text += object.lines[line] + '\n'
         }
         element.innerText = text
@@ -36,7 +38,7 @@ function updateTexts() {
 
 function loadLanguage() {
     let language = 'de'
-    if(!localStorage.getItem('lang')) {
+    if (!localStorage.getItem('lang')) {
         language = system.lang
     } else {
         language = localStorage.getItem('lang')
@@ -53,7 +55,7 @@ function setLanguage(language) {
 function analyseSystem() {
     let language = navigator.language
 
-    switch(language) {
+    switch (language) {
         case 'de-DE':
             language = 'de'
             break
@@ -67,10 +69,26 @@ function analyseSystem() {
     let cookiesEnabled = navigator.cookieEnabled
     let os = navigator.platform
 
-    return {lang: language, cookEn: cookiesEnabled, uOS: os}
+    return { lang: language, cookEn: cookiesEnabled, uOS: os }
 }
 
 function fetchText(path) {
     let http = new Http()
     return http.get(path)
+}
+
+function toggleMenu(e) {
+    let target = "#" + this.dataset.target;
+    console.log(target);
+    if (this.classList.contains("is-active")) {
+        this.classList.remove("is-active")
+        document.querySelector(target).classList.remove("is-active")
+    } else {
+        this.classList.add("is-active")
+        document.querySelector(target).classList.add("is-active")
+    }
+}
+
+window.onload = () => {
+    document.querySelector("#nav-toggle").addEventListener("click", toggleMenu);
 }
