@@ -19,7 +19,12 @@ module.exports = {
     rules: [{
       test: /\.scss$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: '../'
+          }
+        },
         {
           loader: 'css-loader',
         },
@@ -32,6 +37,18 @@ module.exports = {
         }
       ],
       sideEffects: true
+    },
+    {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/images'
+          }
+        }
+      ],
     },
     {
       test: /\.pug$/,
