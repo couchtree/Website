@@ -1,0 +1,11 @@
+{
+    "texts": [
+        {
+            "id": "text1",
+            "lines": [
+                "Zeile 1",
+                "Zeile 2"
+            ] 
+        }
+    ]
+}
