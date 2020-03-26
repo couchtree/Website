@@ -30,6 +30,7 @@
     "bulma": "^0.8.1",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.0.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
