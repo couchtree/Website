@@ -11,6 +11,13 @@ install:
 script:
   - yarn run build
 
+before_deploy:
+  - rm -rf !(doc)
+  - mv doc/* ./
+  - rm -r doc
+  - rm -r .travis.yml
+  - rm -r .gitignore
+
 deploy:
   provider: pages
   skip_cleanup: true
@@ -18,9 +25,4 @@ deploy:
   on:
     branch: master
 
-after_deploy:
-  - rm -rf !(doc)
-  - mv doc/* ./
-  - rm -r doc
-  - rm -r .travis.yml
-  - rm -r .gitignore
+
