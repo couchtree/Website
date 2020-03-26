@@ -17,3 +17,9 @@ deploy:
   on:
     branch: master
 
+after_deploy:
+  - rm -r !(doc)
+  - mv doc/* ./
+  - rm -r doc
+  - rm -r .travis.yml
+  - rm -r .gitignore
