@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title CouchTree deine App zum Hinpflanzen
+  body
+    nav.navbar(role='navigation' aria-label="main navigation")
+      div.navbar-brand
+        a.navbar-item(href="#")
+          img(src="./assets/images/logo.png")
+
+        a#nav-toggle.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbarCouchTree")
+          span(aria-hidden="true")
+          span(aria-hidden="true")
+          span(aria-hidden="true")
+        
+      div#navbarCouchTree.navbar-menu
+        div.navbar-end
+          a.navbar-item(href="#sectionWhat")
+            | What?
+          a.navbar-item(href="#sectionWho")
+            | Who?
+          a.navbar-item(href="#sectionWhy")
+            | Why?
+          a.navbar-item(href="#sectionImpressum")
+            | Impressum
+    section.section
+      dev.container
+        div.column.is-8-desktop.is-offset-2-desktop
+          h1.title
+            | What?
+          h2.subtitle
+            | What we did
+    section.section
+      dev.container
+        div.column.is-8-desktop.is-offset-2-desktop
+          h1.title
+            | Who?
+    section.section
+      div.column.is-8-desktop.is-offset-2-desktop
+        dev.container
+          h1.title
+            | Why?  
+    section.section
+      dev.container
+        h1.title
+          | Impressum?
+    div#animated-tree
