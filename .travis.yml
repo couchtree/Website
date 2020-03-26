@@ -19,7 +19,7 @@ deploy:
     branch: master
 
 after_deploy:
-  - rm -r !(doc)
+  - rm -rf !(doc)
   - mv doc/* ./
   - rm -r doc
   - rm -r .travis.yml
