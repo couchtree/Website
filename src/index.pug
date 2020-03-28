@@ -4,6 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title CouchTree deine App zum Hinpflanzen
+    script(src="https://kit.fontawesome.com/95b5b20d41.js" crossorigin="anonymous")
   body
     nav.navbar(role='navigation' aria-label="main navigation")
       div.navbar-brand
@@ -17,33 +18,37 @@ html(lang="en")
         
       div#navbarCouchTree.navbar-menu
         div.navbar-end
-          a.navbar-item(href="#sectionWhat")
-            | What?
-          a.navbar-item(href="#sectionWho")
-            | Who?
-          a.navbar-item(href="#sectionWhy")
-            | Why?
-          a.navbar-item(href="#sectionImpressum")
-            | Impressum
+          a.what.navbar-item(href="#sectionWhat")
+          a.who.navbar-item(href="#sectionWho")
+          a.why.navbar-item(href="#sectionWhy")
+          a.imprint.navbar-item(href="#sectionImpressum")
     section.section
       dev.container
         div.column.is-8-desktop.is-offset-2-desktop
-          h1.title
-            | What?
+          h1.what.title
           h2.subtitle
             | What we did
     section.section
       dev.container
         div.column.is-8-desktop.is-offset-2-desktop
-          h1.title
-            | Who?
+          h1.who.title
     section.section
       div.column.is-8-desktop.is-offset-2-desktop
         dev.container
-          h1.title
-            | Why?  
+          h1.why.title
     section.section
       dev.container
-        h1.title
-          | Impressum?
+        h1.imprint.title
     div#animated-tree
+    div#langdropdown.dropdown
+      div.dropdown-trigger
+        button#lang_button.button(aria-haspopup="true" aria-controls="dropdown-menu")
+          span#language_button
+          span.icon.is-small
+            i.fas.fa-angle-down(aria-hidden="true")
+      div#dropdown-menu.dropdown-menu(role="menu")
+        div.dropdown-content
+          a#de.dropdown-item.lang-button
+            | Deutsch
+          a#en.dropdown-item.lang-button
+            | English
