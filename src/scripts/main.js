@@ -26,24 +26,10 @@ function loadTexts() {
 }
 
 function updateTexts() {
-  for (let obj in texts.texts) {
-    let object = texts.texts[obj]
-    if (object.id != null) {
-      let element = document.getElementById(object.id)
-      let text = ""
-      for (let line in object.lines) {
-        text += object.lines[line] + "\n"
-      }
-      element.innerText = text
-    } else if (object.class != null) {
-      let elements = document.getElementsByClassName(object.class)
-      let text = ""
-      for (let line in object.lines) {
-        text += object.lines[line] + "\n"
-      }
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].innerText = text
-      }
+  for (let elem in texts) {
+    let list = document.getElementsByClassName(elem)
+    for (let i = 0; i < list.length; i++) {
+      list[i].innerText = texts[elem]
     }
   }
 }
@@ -130,5 +116,48 @@ function getRootLocation() {
 }
 
 window.onload = () => {
+  document.getElementById("totop").addEventListener("click", () => {
+    scrollTo(document.querySelector(".wrapper"), 0, 800)
+  })
   document.querySelector("#nav-toggle").addEventListener("click", toggleMenu)
 }
+
+function scrollTo(elem, to, dur) {
+  console.log(elem.scrollTop)
+  let start = elem.scrollTop
+  let change = to - start
+  let currentTime = 0
+  let increment = 20
+
+  let animateScroll = () => {
+    currentTime += increment
+    let val = Math.easeInOutQuad(currentTime, start, change, dur)
+    elem.scrollTop = val
+    if (currentTime < dur) {
+      setTimeout(animateScroll, increment)
+    }
+  }
+
+  animateScroll()
+}
+
+Math.easeInOutQuad = function (t, b, c, d) {
+  t /= d / 2
+  if (t < 1) return (c / 2) * t * t + b
+  t--
+  return (-c / 2) * (t * (t - 2) - 1) + b
+}
+
+const wrapper = document.querySelector(".wrapper")
+
+wrapper.addEventListener("scroll", () => {
+  let button = document.getElementById("totop")
+  if (wrapper.scrollTop >= 100) {
+    button.classList.remove("is-hidden")
+    button.classList.remove("fadeOut")
+    button.classList.add("fadeIn")
+  } else {
+    button.classList.remove("fadeIn")
+    button.classList.add("fadeOut")
+  }
+})

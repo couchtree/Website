@@ -2,15 +2,113 @@
 $navbar-item-img-max-height: 10rem;
 $navbar-height: 5rem;
 
+//Colors
+$green: #477b72;
+$lightgreen: #bbcbc5;
+$yellow: #f7b935;
+$red: #efaa7b;
+$besch: #fcf1e2;
+$white: #f6f9f9;
+
+.wrapper {
+  background-color: $white;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+}
+
+.section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.static {
+  background-color: #f00;
+}
+
+.bg1::after {
+  background-image: url("https://placekitten.com/g/800/800");
+}
+
+.bg2::after {
+  background-image: url("https://placekitten.com/g/800/600");
+}
+
+.primary.title {
+  color: $yellow;
+}
+
+.primary.subtitle {
+  color: $yellow;
+}
+
+.primary.button {
+  background-color: $yellow;
+  color: $white;
+}
+
 #animated-tree {
   width: 700px;
   height: 700px;
-  background: url('../assets/images/tree_anim_sheet.jpg') left center;
+  background: url("../assets/images/tree_anim_sheet.jpg") left center;
   animation: play 2.5s steps(69) forwards;
 }
 
+#totop {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.fadeIn {
+  animation: fadeIn 1s forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 1s forwards;
+}
+
+.text-center {
+  text-align: center;
+}
+
 @keyframes play {
-  100% { background-position: -48300px; }
+  100% {
+    background-position: -48300px;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @import "~bulma/bulma"; // TODO: just use necessary bulma files
