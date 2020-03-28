@@ -126,7 +126,7 @@ function configureLanguageButtons() {
 }
 
 function getRootLocation() {
-  return location.protocol + "//" + location.host
+  return location.protocol + "//" + location.host + "/Website"
 }
 
 window.onload = () => {
