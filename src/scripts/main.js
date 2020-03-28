@@ -15,15 +15,12 @@ var settings = {
 function main() {
   system = analyseSystem()
   loadLanguage()
-  let animation = new PicAnimation("baumanimation")
-  animation.bind("test")
-  animation.load()
-  animation.play()
+  configureLanguageButtons()
 }
 
 function loadTexts() {
   let filename = settings.language + "_index.json"
-  let path = location.href + "assets/texts/" + filename
+  let path = getRootLocation() + "/assets/texts/" + filename
   texts = JSON.parse(fetchText(path))
   updateTexts()
 }
@@ -31,12 +28,23 @@ function loadTexts() {
 function updateTexts() {
   for (let obj in texts.texts) {
     let object = texts.texts[obj]
-    let element = document.getElementById(object.id)
-    let text = ""
-    for (let line in object.lines) {
-      text += object.lines[line] + "\n"
+    if (object.id != null) {
+      let element = document.getElementById(object.id)
+      let text = ""
+      for (let line in object.lines) {
+        text += object.lines[line] + "\n"
+      }
+      element.innerText = text
+    } else if (object.class != null) {
+      let elements = document.getElementsByClassName(object.class)
+      let text = ""
+      for (let line in object.lines) {
+        text += object.lines[line] + "\n"
+      }
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].innerText = text
+      }
     }
-    element.innerText = text
   }
 }
 
@@ -91,6 +99,34 @@ function toggleMenu(e) {
     this.classList.add("is-active")
     document.querySelector(target).classList.add("is-active")
   }
+}
+
+function configureLanguageButtons() {
+  let elements = document.getElementsByClassName("lang-button")
+  for (let i = 0; i < elements.length; i++) {
+    let elem = elements[i]
+    elem.addEventListener("click", () => {
+      setLanguage(elem.id)
+      let dropdown = document.getElementById("langdropdown")
+      if (dropdown.classList.contains("is-active")) {
+        dropdown.classList.remove("is-active")
+      } else {
+        dropdown.classList.add("is-active")
+      }
+    })
+  }
+  document.getElementById("lang_button").addEventListener("click", (a) => {
+    let dropdown = document.getElementById("langdropdown")
+    if (dropdown.classList.contains("is-active")) {
+      dropdown.classList.remove("is-active")
+    } else {
+      dropdown.classList.add("is-active")
+    }
+  })
+}
+
+function getRootLocation() {
+  return location.protocol + "//" + location.host
 }
 
 window.onload = () => {

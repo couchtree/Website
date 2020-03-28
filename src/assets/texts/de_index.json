@@ -1,11 +1,24 @@
 {
-    "texts": [
-        {
-            "id": "text1",
-            "lines": [
-                "Zeile 1",
-                "Zeile 2"
-            ] 
-        }
-    ]
+  "texts": [
+    {
+      "class": "what",
+      "lines": ["Was?"]
+    },
+    {
+      "class": "who",
+      "lines": ["Wer?"]
+    },
+    {
+      "class": "why",
+      "lines": ["Wieso?"]
+    },
+    {
+      "class": "imprint",
+      "lines": ["Impressum"]
+    },
+    {
+      "id": "language_button",
+      "lines": ["Sprache wählen"]
+    }
+  ]
 }
